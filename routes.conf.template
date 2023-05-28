@@ -1,19 +1,3 @@
-location ~* ^/api/v1/user/(.*)/app/(.*)/index/(.*)/search/?(.*)$ {
-    proxy_pass http://$BACKEND_API_1/api/v1/user/$1/app/$2/index/$3/search/$4$is_args$args;
-}
-
-location ~* ^/api/v1/vs/(.*)$ {
-    proxy_pass http://$BACKEND_API_2$request_uri;
-}
-
-location ~* ^/api/(.*)$ {
-    proxy_pass http://$BACKEND_API_1$request_uri;
-}
-
-location ~* ^/visualsearch/(.*)$ {
-    proxy_pass http://$BACKEND_API_2$request_uri;
-}
-
 location ~* ^/(.*)$ {
-    proxy_pass http://$BACKEND_API_1$request_uri;
+    proxy_pass http://$KUBECOST_COST_ANALYZER_HOST_AND_PORT$request_uri;
 }
